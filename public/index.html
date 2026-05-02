@@ -1,69 +1,335 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="CyberLeaner — A multi-level cybersecurity challenge platform. Test your hacking skills against real-world attack scenarios.">
+  <meta name="description"
+    content="CyberLeaner — A multi-level cybersecurity challenge platform. Test your hacking skills against real-world attack scenarios.">
   <title>CyberLeaner — Cybersecurity Challenge Platform</title>
   <link rel="stylesheet" href="/css/styles.css">
   <style>
-    .home-section { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    .home-section {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
 
     /* Hero */
-    .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; z-index: 2; }
-    .hero-badge { display: inline-block; padding: 6px 16px; border: 1px solid rgba(0,240,255,0.2); border-radius: 20px; font-size: 0.7rem; color: var(--cyan); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 24px; background: rgba(0,240,255,0.05); }
-    .hero-title { font-family: var(--font-display); font-size: 3.5rem; font-weight: 900; color: var(--cyan); letter-spacing: 6px; margin-bottom: 12px; text-shadow: 0 0 40px rgba(0,240,255,0.3), 0 0 80px rgba(0,240,255,0.15); line-height: 1.2; }
-    .hero-sub { font-size: 1.1rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 40px; line-height: 1.7; }
-    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
-    .scroll-indicator { position: absolute; bottom: 30px; color: var(--text-dim); font-size: 0.7rem; letter-spacing: 2px; animation: bounce 2s infinite; }
-    @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(8px)} }
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border: 1px solid rgba(0, 240, 255, 0.2);
+      border-radius: 20px;
+      font-size: 0.7rem;
+      color: var(--cyan);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      background: rgba(0, 240, 255, 0.05);
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: var(--cyan);
+      letter-spacing: 6px;
+      margin-bottom: 12px;
+      text-shadow: 0 0 40px rgba(0, 240, 255, 0.3), 0 0 80px rgba(0, 240, 255, 0.15);
+      line-height: 1.2;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 30px;
+      color: var(--text-dim);
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateY(0)
+      }
+
+      50% {
+        transform: translateY(8px)
+      }
+    }
 
     /* Features */
-    .features-section { padding: 80px 0; position: relative; z-index: 2; }
-    .section-label { font-family: var(--font-display); font-size: 0.7rem; color: var(--magenta); letter-spacing: 3px; text-transform: uppercase; text-align: center; margin-bottom: 8px; }
-    .section-title { font-family: var(--font-display); font-size: 1.8rem; color: var(--text-primary); text-align: center; margin-bottom: 48px; letter-spacing: 2px; }
-    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
-    .feature-card { background: var(--bg-card); backdrop-filter: blur(20px); border: 1px solid var(--border-subtle); border-radius: var(--radius); padding: 32px; transition: var(--transition); position: relative; overflow: hidden; }
-    .feature-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--cyan), transparent); opacity: 0; transition: var(--transition); }
-    .feature-card:hover { transform: translateY(-4px); border-color: rgba(0,240,255,0.15); box-shadow: 0 12px 40px rgba(0,240,255,0.06); }
-    .feature-card:hover::before { opacity: 1; }
-    .feature-icon { font-size: 2rem; margin-bottom: 16px; }
-    .feature-title { font-family: var(--font-display); font-size: 0.9rem; color: var(--cyan); margin-bottom: 8px; letter-spacing: 1px; }
-    .feature-desc { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; }
+    .features-section {
+      padding: 80px 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .section-label {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      color: var(--magenta);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      color: var(--text-primary);
+      text-align: center;
+      margin-bottom: 48px;
+      letter-spacing: 2px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      padding: 32px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(0, 240, 255, 0.15);
+      box-shadow: 0 12px 40px rgba(0, 240, 255, 0.06);
+    }
+
+    .feature-card:hover::before {
+      opacity: 1;
+    }
+
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+
+    .feature-title {
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      color: var(--cyan);
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+    }
+
+    .feature-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
 
     /* Levels Preview */
-    .levels-section { padding: 80px 0; position: relative; z-index: 2; }
-    .level-preview { display: flex; gap: 32px; align-items: center; margin-bottom: 48px; padding: 32px; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius); transition: var(--transition); }
-    .level-preview:hover { border-color: rgba(0,240,255,0.12); }
-    .level-preview.reverse { flex-direction: row-reverse; }
-    .level-num { font-family: var(--font-display); font-size: 3rem; font-weight: 900; color: rgba(0,240,255,0.1); min-width: 100px; text-align: center; }
-    .level-info { flex: 1; }
-    .level-info h3 { font-family: var(--font-display); font-size: 1.1rem; color: var(--cyan); margin-bottom: 8px; letter-spacing: 1px; }
-    .level-info p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; }
-    .level-tag { display: inline-block; padding: 4px 10px; border-radius: 4px; font-size: 0.65rem; letter-spacing: 1px; text-transform: uppercase; margin-top: 12px; }
-    .tag-red { background: rgba(255,42,109,0.15); color: var(--magenta); border: 1px solid rgba(255,42,109,0.3); }
-    .tag-gold { background: rgba(255,215,0,0.15); color: var(--gold); border: 1px solid rgba(255,215,0,0.3); }
+    .levels-section {
+      padding: 80px 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .level-preview {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      margin-bottom: 48px;
+      padding: 32px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      transition: var(--transition);
+    }
+
+    .level-preview:hover {
+      border-color: rgba(0, 240, 255, 0.12);
+    }
+
+    .level-preview.reverse {
+      flex-direction: row-reverse;
+    }
+
+    .level-num {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 900;
+      color: rgba(0, 240, 255, 0.1);
+      min-width: 100px;
+      text-align: center;
+    }
+
+    .level-info {
+      flex: 1;
+    }
+
+    .level-info h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--cyan);
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+    }
+
+    .level-info p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .level-tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.65rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-top: 12px;
+    }
+
+    .tag-red {
+      background: rgba(255, 42, 109, 0.15);
+      color: var(--magenta);
+      border: 1px solid rgba(255, 42, 109, 0.3);
+    }
+
+    .tag-gold {
+      background: rgba(255, 215, 0, 0.15);
+      color: var(--gold);
+      border: 1px solid rgba(255, 215, 0, 0.3);
+    }
 
     /* CTA Section */
-    .cta-section { padding: 80px 0; text-align: center; position: relative; z-index: 2; }
-    .cta-box { background: linear-gradient(135deg, rgba(0,240,255,0.05), rgba(255,42,109,0.05)); border: 1px solid rgba(0,240,255,0.1); border-radius: var(--radius); padding: 60px 40px; }
-    .cta-box h2 { font-family: var(--font-display); font-size: 1.6rem; color: var(--text-primary); margin-bottom: 12px; letter-spacing: 2px; }
-    .cta-box p { color: var(--text-secondary); margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .cta-section {
+      padding: 80px 0;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, rgba(0, 240, 255, 0.05), rgba(255, 42, 109, 0.05));
+      border: 1px solid rgba(0, 240, 255, 0.1);
+      border-radius: var(--radius);
+      padding: 60px 40px;
+    }
+
+    .cta-box h2 {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+      letter-spacing: 2px;
+    }
+
+    .cta-box p {
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
 
     /* Footer */
-    .site-footer { padding: 40px 0; text-align: center; border-top: 1px solid var(--border-subtle); position: relative; z-index: 2; }
-    .site-footer p { font-size: 0.75rem; color: var(--text-dim); }
-    .footer-links { display: flex; gap: 16px; justify-content: center; margin-bottom: 12px; }
-    .footer-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.8rem; transition: var(--transition); }
-    .footer-links a:hover { color: var(--cyan); }
+    .site-footer {
+      padding: 40px 0;
+      text-align: center;
+      border-top: 1px solid var(--border-subtle);
+      position: relative;
+      z-index: 2;
+    }
+
+    .site-footer p {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--cyan);
+    }
 
     @media (max-width: 768px) {
-      .hero-title { font-size: 2rem; letter-spacing: 3px; }
-      .level-preview, .level-preview.reverse { flex-direction: column; text-align: center; }
-      .level-num { min-width: auto; }
+      .hero-title {
+        font-size: 2rem;
+        letter-spacing: 3px;
+      }
+
+      .level-preview,
+      .level-preview.reverse {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .level-num {
+        min-width: auto;
+      }
     }
   </style>
 </head>
+
 <body>
   <canvas id="matrix-canvas"></canvas>
   <div class="scanline-overlay"></div>
@@ -100,32 +366,38 @@
       <div class="feature-card">
         <div class="feature-icon">🎯</div>
         <h3 class="feature-title">Hands-On Challenges</h3>
-        <p class="feature-desc">No theory overload. Jump straight into realistic scenarios that simulate actual vulnerabilities found in the wild.</p>
+        <p class="feature-desc">No theory overload. Jump straight into realistic scenarios that simulate actual
+          vulnerabilities found in the wild.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">⏱️</div>
         <h3 class="feature-title">Persistent Timer</h3>
-        <p class="feature-desc">Your challenge timer runs in the cloud. Close your browser, take a break — your progress is always saved and tracked.</p>
+        <p class="feature-desc">Your challenge timer runs in the cloud. Close your browser, take a break — your progress
+          is always saved and tracked.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">📊</div>
         <h3 class="feature-title">Progress Tracking</h3>
-        <p class="feature-desc">See your completion time for every level. Compare your speed. Each level unlocks only after the previous one is conquered.</p>
+        <p class="feature-desc">See your completion time for every level. Compare your speed. Each level unlocks only
+          after the previous one is conquered.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🔓</div>
         <h3 class="feature-title">Progressive Difficulty</h3>
-        <p class="feature-desc">Start with the basics and work your way up. Each level introduces new attack vectors and security concepts.</p>
+        <p class="feature-desc">Start with the basics and work your way up. Each level introduces new attack vectors and
+          security concepts.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🧠</div>
         <h3 class="feature-title">Think Like a Hacker</h3>
-        <p class="feature-desc">The obvious path is never the answer. Learn to think creatively, inspect deeply, and exploit unconventional entry points.</p>
+        <p class="feature-desc">The obvious path is never the answer. Learn to think creatively, inspect deeply, and
+          exploit unconventional entry points.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🏆</div>
         <h3 class="feature-title">Earn Recognition</h3>
-        <p class="feature-desc">Complete all levels and get your results emailed. Show off your skills with verified completion times.</p>
+        <p class="feature-desc">Complete all levels and get your results emailed. Show off your skills with verified
+          completion times.</p>
       </div>
     </div>
   </section>
@@ -139,7 +411,8 @@
       <div class="level-num">01</div>
       <div class="level-info">
         <h3>🛡️ SQL Injection</h3>
-        <p>Face a seemingly secure authentication system. Classic injection techniques are detected and blocked. You'll need to discover the hidden bypass method — one that goes beyond the input fields. Think outside the form.</p>
+        <p>Face a seemingly secure authentication system. Classic injection techniques are detected and blocked. You'll
+          need to discover the hidden bypass method — one that goes beyond the input fields. Think outside the form.</p>
         <span class="level-tag tag-red">Attack Vector: Injection & Headers</span>
       </div>
     </div>
@@ -148,7 +421,8 @@
       <div class="level-num">02</div>
       <div class="level-info">
         <h3>🔓 Brute Force</h3>
-        <p>Crack a password-protected system through sheer persistence. The system fights back with progressive delays, but every attempt weakens its defenses. How many tries will it take?</p>
+        <p>Crack a password-protected system through sheer persistence. The system fights back with progressive delays,
+          but every attempt weakens its defenses. How many tries will it take?</p>
         <span class="level-tag tag-gold">Attack Vector: Persistence & Automation</span>
       </div>
     </div>
@@ -159,7 +433,8 @@
     <div class="cta-box">
       <h2>READY TO PROVE YOURSELF?</h2>
       <p>Create your account and enter the arena. The clock starts when you begin your first challenge.</p>
-      <a href="/register.html" class="btn btn-cyan btn-sm" style="width:auto;min-width:220px;margin:0 auto;">⚡ REGISTER NOW</a>
+      <a href="/register.html" class="btn btn-cyan btn-sm" style="width:auto;min-width:220px;margin:0 auto;">⚡ REGISTER
+        NOW</a>
     </div>
   </section>
 
@@ -181,4 +456,5 @@
     typeWriter('hero-tagline', 'Test your hacking skills against real-world attack scenarios. Beat the clock. Prove your worth.', 35);
   </script>
 </body>
+
 </html>
