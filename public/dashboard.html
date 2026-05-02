@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberLeaner — Dashboard</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <canvas id="matrix-canvas"></canvas>
+  <div class="scanline-overlay"></div>
+
+  <nav class="nav-bar">
+    <a href="/dashboard.html" class="nav-brand">⚡ CYBERLEANER</a>
+    <div class="nav-links">
+      <a href="/dashboard.html" class="active">Dashboard</a>
+      <a href="#" id="admin-link" style="display:none;">Admin</a>
+      <a href="#" onclick="logout()" style="color:var(--magenta);">Logout</a>
+    </div>
+  </nav>
+
+  <div class="page-container" style="padding-top:80px;">
+    <div class="dashboard-header">
+      <div>
+        <p class="welcome-text">Welcome back, <strong id="user-name">Agent</strong></p>
+        <p style="font-size:0.75rem;color:var(--text-dim);">Your mission awaits. Complete all levels to prove your skills.</p>
+      </div>
+      <div class="header-actions">
+        <span style="font-size:0.75rem;color:var(--text-dim);" id="user-email"></span>
+      </div>
+    </div>
+
+    <div class="levels-grid" id="levels-grid">
+      <!-- Level 1 -->
+      <div class="level-card" id="level-card-1">
+        <div class="level-header">
+          <span class="level-number">LEVEL 01</span>
+          <span class="status-badge" id="status-1">Loading...</span>
+        </div>
+        <h3 class="level-title">🛡️ SQL Injection</h3>
+        <p class="level-desc">Bypass the authentication system using injection techniques. But beware — the obvious paths are guarded.</p>
+        <div class="timer-label" id="timer-label-1">ELAPSED TIME</div>
+        <div class="timer-display" id="timer-1">00:00:00</div>
+        <button class="btn btn-cyan btn-sm" id="start-btn-1" onclick="startLevel(1)" style="width:100%;margin-top:8px;">▶ START CHALLENGE</button>
+      </div>
+
+      <!-- Level 2 -->
+      <div class="level-card" id="level-card-2">
+        <div class="level-header">
+          <span class="level-number">LEVEL 02</span>
+          <span class="status-badge" id="status-2">Loading...</span>
+        </div>
+        <h3 class="level-title">🔓 Brute Force</h3>
+        <p class="level-desc">Crack the system password through persistent attempts. The system weakens with each try.</p>
+        <div class="timer-label" id="timer-label-2">ELAPSED TIME</div>
+        <div class="timer-display" id="timer-2">00:00:00</div>
+        <button class="btn btn-cyan btn-sm" id="start-btn-2" onclick="startLevel(2)" style="width:100%;margin-top:8px;">▶ START CHALLENGE</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/animations.js"></script>
+  <script src="/js/config.js"></script>
+  <script src="/js/timer.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/dashboard.js"></script>
+  <script>initMatrixRain('matrix-canvas');</script>
+</body>
+</html>

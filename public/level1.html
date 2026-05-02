@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberLeaner — Level 1: SQL Injection</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <canvas id="matrix-canvas"></canvas>
+  <div class="scanline-overlay"></div>
+
+  <nav class="nav-bar">
+    <a href="/dashboard.html" class="nav-brand">⚡ CYBERLEANER</a>
+    <div class="nav-links">
+      <a href="/dashboard.html">← Dashboard</a>
+      <span style="color:var(--gold);font-size:0.8rem;">LEVEL 01</span>
+    </div>
+  </nav>
+
+  <div class="page-container" style="padding-top:80px;">
+    <div class="glass-card wide fade-in-up">
+      <h1 class="title cyan">🛡️ SQL INJECTION</h1>
+      <p class="subtitle">Bypass the authentication system. Not all doors are opened the same way.</p>
+
+      <div class="timer-label" id="timer-label-1">ELAPSED TIME</div>
+      <div class="timer-display" id="timer-1">00:00:00</div>
+
+      <div id="level-alert" class="alert"></div>
+
+      <!-- Terminal Interface -->
+      <div class="terminal" style="margin-top:20px;">
+        <div class="terminal-header">
+          <span class="terminal-dot red"></span>
+          <span class="terminal-dot yellow"></span>
+          <span class="terminal-dot green"></span>
+          <span class="terminal-title">secure-auth-system v3.2.1</span>
+        </div>
+        <div class="terminal-line"><span class="prompt">system@secure:~$</span> <span class="cmd">Initializing authentication module...</span></div>
+        <div class="terminal-line"><span class="output">[ OK ] Database connected</span></div>
+        <div class="terminal-line"><span class="output">[ OK ] Auth service ready</span></div>
+        <div class="terminal-line"><span class="prompt">system@secure:~$</span> <span class="cmd">Awaiting credentials...</span></div>
+      </div>
+
+      <!-- Login Form -->
+      <form id="sql-form" style="margin-top:24px;">
+        <div class="form-group">
+          <label for="sql-username">Username</label>
+          <input type="text" id="sql-username" placeholder="Enter username" autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label for="sql-password">Password</label>
+          <input type="text" id="sql-password" placeholder="Enter password" autocomplete="off">
+        </div>
+        <button type="submit" class="btn btn-magenta">🔐 AUTHENTICATE</button>
+      </form>
+
+      <!-- Hint area -->
+      <div id="terminal-output" style="margin-top:16px;"></div>
+    </div>
+  </div>
+
+  <!-- SQL Injection Popup Modal -->
+  <div class="modal-overlay" id="sql-modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <h2 style="color:var(--magenta);text-align:center;margin-bottom:16px;">🚨 INJECTION DETECTED</h2>
+      <p style="text-align:center;font-size:1.1rem;margin-bottom:8px;">Nice try 😏</p>
+      <p style="text-align:center;color:var(--text-secondary);font-size:0.9rem;">This method will not work.</p>
+      <p style="text-align:center;color:var(--gold);font-size:0.9rem;margin-top:12px;">💡 Try <strong>Header-based method</strong>.</p>
+      <button class="btn btn-outline btn-sm" onclick="closeModal()" style="margin-top:20px;">UNDERSTOOD</button>
+    </div>
+  </div>
+
+  <!-- Success Modal -->
+  <div class="modal-overlay" id="success-modal">
+    <div class="modal-content" style="border-color:var(--green);">
+      <h2 style="color:var(--green);text-align:center;margin-bottom:16px;">🎉 ACCESS GRANTED</h2>
+      <p style="text-align:center;font-size:1rem;color:var(--text-primary);">You found the header bypass!</p>
+      <p style="text-align:center;color:var(--text-secondary);font-size:0.85rem;margin-top:8px;" id="completion-info"></p>
+      <button class="btn btn-green btn-sm" onclick="goToNext()" style="margin-top:20px;">PROCEED TO LEVEL 2 →</button>
+    </div>
+  </div>
+
+  <!-- Hidden hint in source code -->
+  <!-- 
+    ====================================
+    HINT: The authentication system has a debug backdoor.
+    Try sending a custom HTTP header with your request.
+    Header: X-Auth-Bypass: true
+    ====================================
+  -->
+
+  <script src="/js/animations.js"></script>
+  <script src="/js/config.js"></script>
+  <script src="/js/timer.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/level1.js"></script>
+  <script>initMatrixRain('matrix-canvas');</script>
+</body>
+</html>

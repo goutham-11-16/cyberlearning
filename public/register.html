@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberLeaner — Register</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <canvas id="matrix-canvas"></canvas>
+  <div class="scanline-overlay"></div>
+
+  <nav class="nav-bar">
+    <a href="/" class="nav-brand">⚡ CYBERLEANER</a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/register.html" class="active">Register</a>
+    </div>
+  </nav>
+
+  <div class="page-container">
+    <div class="glass-card fade-in-up">
+      <h1 class="title cyan">JOIN THE ARENA</h1>
+      <p class="subtitle">Create your account and begin the challenge. The clock starts when you do.</p>
+
+      <div id="reg-alert" class="alert"></div>
+
+      <form id="register-form">
+        <div class="form-group">
+          <label for="reg-name">Full Name</label>
+          <input type="text" id="reg-name" placeholder="Enter your name" required autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label for="reg-email">Email Address</label>
+          <input type="email" id="reg-email" placeholder="you@example.com" required autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label for="reg-password">Password</label>
+          <input type="password" id="reg-password" placeholder="Min 6 characters" required minlength="6" autocomplete="new-password">
+        </div>
+        <button type="submit" class="btn btn-cyan">🚀 CREATE ACCOUNT</button>
+      </form>
+
+      <p style="text-align:center;margin-top:20px;font-size:0.8rem;color:var(--text-dim);">
+        <a href="/" style="color:var(--text-secondary);text-decoration:none;">← Back to Home</a>
+      </p>
+    </div>
+  </div>
+
+  <script src="/js/animations.js"></script>
+  <script src="/js/config.js"></script>
+  <script src="/js/auth.js"></script>
+  <script>initMatrixRain('matrix-canvas');</script>
+</body>
+</html>

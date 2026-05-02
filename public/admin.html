@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberLeaner — Admin Panel</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <canvas id="matrix-canvas"></canvas>
+  <div class="scanline-overlay"></div>
+
+  <nav class="nav-bar">
+    <a href="/dashboard.html" class="nav-brand">⚡ CYBERLEANER</a>
+    <div class="nav-links">
+      <a href="/dashboard.html">Dashboard</a>
+      <a href="/admin.html" class="active">Admin</a>
+      <a href="#" onclick="logout()" style="color:var(--magenta);">Logout</a>
+    </div>
+  </nav>
+
+  <div class="page-container" style="padding-top:80px;align-items:stretch;max-width:1300px;margin:0 auto;">
+    <h1 class="title cyan" style="margin-bottom:24px;">⚙️ ADMIN PANEL</h1>
+
+    <!-- Stats Row -->
+    <div style="display:flex;gap:16px;margin-bottom:24px;flex-wrap:wrap;" id="stats-row">
+      <div class="glass-card" style="flex:1;min-width:200px;padding:20px;text-align:center;">
+        <p style="font-size:0.65rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:2px;">Total Users</p>
+        <p style="font-family:var(--font-display);font-size:2rem;color:var(--cyan);" id="stat-users">—</p>
+      </div>
+      <div class="glass-card" style="flex:1;min-width:200px;padding:20px;text-align:center;">
+        <p style="font-size:0.65rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:2px;">L1 Completed</p>
+        <p style="font-family:var(--font-display);font-size:2rem;color:var(--green);" id="stat-l1">—</p>
+      </div>
+      <div class="glass-card" style="flex:1;min-width:200px;padding:20px;text-align:center;">
+        <p style="font-size:0.65rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:2px;">L2 Completed</p>
+        <p style="font-family:var(--font-display);font-size:2rem;color:var(--magenta);" id="stat-l2">—</p>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('users')">👥 Users</button>
+      <button class="tab-btn" onclick="switchTab('settings')">⚙️ Settings</button>
+    </div>
+
+    <!-- Users Tab -->
+    <div class="tab-content active" id="tab-users">
+      <div class="glass-card full" style="overflow-x:auto;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+          <h2 style="margin:0;">ALL USERS</h2>
+          <button class="btn btn-outline btn-sm" onclick="exportCSV()">📥 Export CSV</button>
+        </div>
+        <table class="data-table" id="users-table">
+          <thead>
+            <tr>
+              <th>Name</th><th>Email</th><th>Level</th>
+              <th>L1 Start</th><th>L1 End</th><th>L1 Duration</th>
+              <th>L2 Start</th><th>L2 End</th><th>L2 Duration</th>
+            </tr>
+          </thead>
+          <tbody id="users-tbody"></tbody>
+        </table>
+        <p id="no-users" style="text-align:center;color:var(--text-dim);padding:20px;display:none;">No users found.</p>
+      </div>
+    </div>
+
+    <!-- Settings Tab -->
+    <div class="tab-content" id="tab-settings">
+      <div class="glass-card full">
+        <h2>API KEYS & EMAIL CONFIG</h2>
+        <p style="font-size:0.8rem;color:var(--text-secondary);margin-bottom:20px;">Configure email provider keys to enable congratulation emails on level completion.</p>
+        <div id="settings-alert" class="alert"></div>
+        <div class="settings-grid" id="settings-grid"></div>
+        <button class="btn btn-cyan btn-sm" onclick="saveSettings()" style="margin-top:20px;width:auto;">💾 SAVE SETTINGS</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/animations.js"></script>
+  <script src="/js/config.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/admin.js"></script>
+  <script>initMatrixRain('matrix-canvas');</script>
+</body>
+</html>

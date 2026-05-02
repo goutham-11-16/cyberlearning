@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberLeaner — Level 2: Brute Force</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <canvas id="matrix-canvas"></canvas>
+  <div class="scanline-overlay"></div>
+
+  <nav class="nav-bar">
+    <a href="/dashboard.html" class="nav-brand">⚡ CYBERLEANER</a>
+    <div class="nav-links">
+      <a href="/dashboard.html">← Dashboard</a>
+      <span style="color:var(--gold);font-size:0.8rem;">LEVEL 02</span>
+    </div>
+  </nav>
+
+  <div class="page-container" style="padding-top:80px;">
+    <div class="glass-card wide fade-in-up">
+      <h1 class="title magenta">🔓 BRUTE FORCE</h1>
+      <p class="subtitle">Crack the system password. Persistence is key.</p>
+
+      <div class="timer-label" id="timer-label-2">ELAPSED TIME</div>
+      <div class="timer-display" id="timer-2">00:00:00</div>
+
+      <div id="level-alert" class="alert"></div>
+
+      <!-- Attempt Counter -->
+      <div style="text-align:center;margin:16px 0;">
+        <p style="font-size:0.7rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:2px;margin-bottom:8px;">Attempts</p>
+        <div class="attempt-counter" id="attempt-dots"></div>
+        <p style="font-size:0.8rem;color:var(--text-secondary);margin-top:8px;" id="attempt-text">0 / 10 attempts</p>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+
+      <!-- Password Input -->
+      <form id="brute-form" style="margin-top:24px;">
+        <div class="form-group">
+          <label for="brute-password">System Password</label>
+          <input type="text" id="brute-password" placeholder="Enter password attempt" autocomplete="off">
+        </div>
+        <button type="submit" class="btn btn-magenta" id="crack-btn">🔨 CRACK THE SYSTEM</button>
+      </form>
+
+      <!-- Terminal Output -->
+      <div class="terminal" style="margin-top:20px;max-height:200px;overflow-y:auto;" id="brute-terminal">
+        <div class="terminal-header">
+          <span class="terminal-dot red"></span>
+          <span class="terminal-dot yellow"></span>
+          <span class="terminal-dot green"></span>
+          <span class="terminal-title">brute-force-module v2.0</span>
+        </div>
+        <div class="terminal-line"><span class="output">[ READY ] Brute force module initialized</span></div>
+        <div class="terminal-line"><span class="output">[ INFO ] System defense: Adaptive delay</span></div>
+      </div>
+
+      <!-- Delay indicator -->
+      <div id="delay-indicator" style="display:none;text-align:center;margin-top:16px;">
+        <div class="spinner"></div>
+        <p style="color:var(--gold);font-size:0.8rem;" id="delay-text">System imposing delay...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success Modal -->
+  <div class="modal-overlay" id="success-modal">
+    <div class="modal-content" style="border-color:var(--green);box-shadow:0 0 60px rgba(5,255,161,0.3);">
+      <h2 style="color:var(--green);text-align:center;margin-bottom:16px;">🏆 SYSTEM COMPROMISED</h2>
+      <p style="text-align:center;font-size:1rem;color:var(--text-primary);">Brute force attack successful!</p>
+      <p style="text-align:center;color:var(--text-secondary);font-size:0.85rem;margin-top:8px;" id="completion-info"></p>
+      <p style="text-align:center;color:var(--green);font-size:1.2rem;margin-top:16px;">🎉 ALL LEVELS COMPLETE! 🎉</p>
+      <button class="btn btn-green btn-sm" onclick="window.location.href='/dashboard.html'" style="margin-top:20px;">← BACK TO DASHBOARD</button>
+    </div>
+  </div>
+
+  <script src="/js/animations.js"></script>
+  <script src="/js/config.js"></script>
+  <script src="/js/timer.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/level2.js"></script>
+  <script>initMatrixRain('matrix-canvas');</script>
+</body>
+</html>
