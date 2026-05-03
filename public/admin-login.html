@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CyberLeaner — Login</title>
+  <title>CyberLeaner — Admin Access</title>
   <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
@@ -14,33 +14,36 @@
     <a href="/" class="nav-brand">⚡ CYBERLEANER</a>
     <div class="nav-links">
       <a href="/">Home</a>
-      <a href="/login.html" class="active">Login</a>
+      <a href="/login.html">Login</a>
       <a href="/register.html">Register</a>
-      <a href="/admin-login.html" style="color:var(--text-dim);font-size:0.75rem;">🔒 Admin</a>
+      <a href="/admin-login.html" class="active" style="color:var(--text-dim);font-size:0.75rem;">🔒 Admin</a>
     </div>
   </nav>
 
   <div class="page-container">
     <div class="glass-card fade-in-up">
-      <h1 class="title cyan">USER LOGIN</h1>
-      <p class="subtitle">Enter your credentials to access the challenge dashboard.</p>
+      <div style="text-align:center;margin-bottom:8px;">
+        <span style="display:inline-block;padding:4px 14px;border:1px solid rgba(255,42,109,0.3);border-radius:20px;font-size:0.65rem;color:var(--magenta);letter-spacing:2px;text-transform:uppercase;background:rgba(255,42,109,0.08);">🔒 RESTRICTED ACCESS</span>
+      </div>
+      <h1 class="title cyan">ADMIN TERMINAL</h1>
+      <p class="subtitle">Authorized personnel only. This terminal is for administrators.</p>
 
       <div id="login-alert" class="alert"></div>
 
       <form id="login-form">
         <div class="form-group">
-          <label for="login-email">Email Address</label>
-          <input type="email" id="login-email" placeholder="hacker@example.com" required autocomplete="email">
+          <label for="login-email">Admin Email</label>
+          <input type="email" id="login-email" placeholder="admin@cyberleaner.com" required autocomplete="email">
         </div>
         <div class="form-group">
           <label for="login-password">Password</label>
-          <input type="password" id="login-password" placeholder="Enter your password" required autocomplete="current-password">
+          <input type="password" id="login-password" placeholder="Enter admin password" required autocomplete="current-password">
         </div>
         <button type="submit" class="btn btn-magenta">🔐 AUTHENTICATE</button>
       </form>
 
       <p style="text-align:center;margin-top:24px;font-size:0.75rem;color:var(--text-dim);">
-        Don't have an account? <a href="/register.html" style="color:var(--cyan);text-decoration:none;">Register here</a>
+        Not an admin? <a href="/" style="color:var(--cyan);text-decoration:none;">← Back to Home</a>
       </p>
     </div>
   </div>
@@ -64,10 +67,16 @@
       });
 
       if (ok && data.session) {
-        setToken(data.session.access_token);
-        setUser(data.user);
-        showAlert('login-alert', '✅ Login successful. Redirecting...', 'success');
-        setTimeout(() => window.location.href = '/dashboard.html', 1000);
+        // Check if this user is admin
+        if (data.user.is_admin || data.user.email === 'esambadigouthamreddy@gmail.com') {
+          setToken(data.session.access_token);
+          setUser(data.user);
+          showAlert('login-alert', '✅ Admin access granted. Redirecting...', 'success');
+          setTimeout(() => window.location.href = '/admin.html', 1000);
+        } else {
+          showAlert('login-alert', '⛔ Access denied. This terminal is for administrators only.', 'error');
+          btn.disabled = false; btn.textContent = '🔐 AUTHENTICATE';
+        }
       } else {
         showAlert('login-alert', data.error || 'Authentication failed');
         btn.disabled = false; btn.textContent = '🔐 AUTHENTICATE';
